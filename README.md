@@ -24,5 +24,14 @@ answer : example:
   step 3 : when you can use html body append the newElement ;
   document.body.appendChild(newElement)
 
+### 3. What is Event Bubbling? And how does it work?
+answer : when an event occurs in a child event , that event continues to rise step by step to its parent 
+         Event bubbling from child to parent 
+### 4. What is Event Delegation in JavaScript? Why is it useful?
+anser : instead of assigning separate event to multiple child elements a single event listener is placed on their parent element and the work is done using event bubbling .
+
+### 5. What is the difference between preventDefault() and stopPropagation() methods?
+
+answer : preventDefault() its stop Browser default behavior and stopPropagation() its stop event bubbling .
 
 
