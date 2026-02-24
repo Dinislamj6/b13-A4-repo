@@ -15,16 +15,14 @@ const btnRejected = document.getElementById("btn-rejected");
 const filterSection = document.getElementById("filtered-section");
 const rejectedSection = document.getElementById("rejected-section");
 const totalJobCount = document.getElementById("total-job-count");
-// problem acha//
 const hiddenCard = document.getElementById("hidden-card");
-// console.log({totalJobCount,total})
+
 
 function calCuletCount() {
   total.innerText = allCardSection.children.length;
   console.log(totalJobCount, allCardSection.children.length);
   totalJobCount.innerText = allCardSection.children.length;
 
-  // interviewCount.innerText = interviewList.children.length;
   interviewCount.innerText = interviewList.length;
   rejectedCount.innerText = rejectedList.length;
 }
@@ -35,7 +33,6 @@ function toggleStyle(id) {
   btnAll.classList.remove("bg-primary", "text-white");
   btnInterview.classList.remove("bg-primary", "text-white");
   btnRejected.classList.remove("bg-primary", "text-white");
-  /// hidden card//
   hiddenCard.classList.remove("hidden");
 
   btnAll.classList.add("bg-gray-300", "text-black");
@@ -46,7 +43,6 @@ function toggleStyle(id) {
   selected.classList.add("bg-primary", "text-white");
 
   currentStatus = id;
-  // console.log(currentStatus);
 
   if (id == "btn-interview") {
     allCardSection.classList.add("hidden");
@@ -64,13 +60,13 @@ function toggleStyle(id) {
 }
 
 mainContainer.addEventListener("click", function (event) {
-  //    console.log('click')
+  
   if (event.target.classList.contains("interview-btn")) {
     const parentNode = event.target.parentNode.parentNode;
 
-    // hiddenCard.classList.remove('hidden')
+  
 
-    // console.log(parentNode)
+    
     const jobName = parentNode.querySelector(".jobName").innerText;
     const jobtitle = parentNode.querySelector(".jobtitle").innerText;
     const jobsalary = parentNode.querySelector(".jobsalary").innerText;
@@ -85,16 +81,16 @@ mainContainer.addEventListener("click", function (event) {
       status: "interview",
       jobdetails,
     };
-    // console.log(cardInfo)
+    
     const jobExist = interviewList.find(
       (item) => item.jobName == cardInfo.jobName,
     );
-    //  document.querySelector('.not-apply-btn').innerText = 'Interview'
+   
     if (!jobExist) {
       interviewList.push(cardInfo);
-      // console.log(interviewList);
+     
     }
-    // rejectedList = i.filter(item => item.jobName != cardInfo.jobName)
+    
 
     renderInterview(interviewList);
 
@@ -103,9 +99,9 @@ mainContainer.addEventListener("click", function (event) {
 
   // // step 2 rejected for
   else if (event.target.classList.contains("btn-error")) {
-    // console.log('click')
+ 
     const parentNode = event.target.parentNode.parentNode;
-    //  hiddenCard.classList.remove('hidden')
+    
 
     const jobName = parentNode.querySelector(".jobName").innerText;
     const jobtitle = parentNode.querySelector(".jobtitle").innerText;
@@ -137,7 +133,7 @@ mainContainer.addEventListener("click", function (event) {
     renderInterview(interviewList);
   }
 
-  //  console.log(event.target)
+  
 
   /// delete btn////
   else if (event.target.classList.contains("btn-delete")) {
@@ -151,7 +147,7 @@ mainContainer.addEventListener("click", function (event) {
   }
 });
 
-//  render interview
+
 
 function renderInterview(interviewLists) {
   if (interviewLists.length == 0) {
@@ -209,7 +205,7 @@ function renderRejected(rejectedLists) {
   rejectedSection.innerHTML = "";
 
   for (let rejected of rejectedLists) {
-    // console.log(interview)
+  
     let div = document.createElement("div");
     div.className = "card w-full bg-base-100 card-lg shadow-sm";
     div.innerHTML = `
@@ -241,15 +237,3 @@ function renderRejected(rejectedLists) {
   }
 }
 
-// //////////////////////////////hidden related kaj /////////////////////////////////
-// document.getElementById('btn-delete').addEventListener('click', function (event) {
-//     const firstCard = document.getElementById('first-card');
-//       const parentNode = event.target.parentNode.parentNode.parentNode.parentNode
-//       console.log(parentNode)
-//     // firstCard.classList.add('hidden');
-//     // calCuletCount()
-//       total.innerText = allCardSection.children.length;
-//       // 1 jah button click main parent k dorta honbe ;
-//     //   this.removeChild ami
-
-// })
