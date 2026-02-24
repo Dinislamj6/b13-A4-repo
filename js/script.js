@@ -1,6 +1,6 @@
 let interviewList = [];
 let rejectedList = [];
-let currentStatus = 'all'
+let currentStatus = 'all';
 
 
 
@@ -15,18 +15,27 @@ const btnInterview = document.getElementById('btn-interview');
 const btnRejected = document.getElementById('btn-rejected');
 const filterSection = document.getElementById('filtered-section');
 const rejectedSection = document.getElementById('rejected-section');
+const totalJobCount = document.getElementById('total-job-count');
 // problem acha//
 const hiddenCard = document.getElementById('hidden-card')
+// console.log({totalJobCount,total})
 
 function calCuletCount() {
     total.innerText = allCardSection.children.length;
+    console.log(totalJobCount,allCardSection.children.length)
+    totalJobCount.innerText = allCardSection.children.length;
+
+    
+
     // interviewCount.innerText = interviewList.children.length;
     interviewCount.innerText = interviewList.length;
     rejectedCount.innerText = rejectedList.length;
 
 
 
+
 }
+calCuletCount()
 
 function toggleStyle(id) {
 
@@ -81,6 +90,7 @@ function toggleStyle(id) {
 }
 
 mainContainer.addEventListener('click', function (event) {
+    
     //    console.log('click')
     if (event.target.classList.contains('interview-btn')) {
         const parentNode = event.target.parentNode.parentNode
@@ -156,10 +166,38 @@ mainContainer.addEventListener('click', function (event) {
         renderRejected(rejectedList)
         renderInterview(interviewList);
     }
+ 
+    //  console.log(event.target)
+
+      /// delete btn////
+       else if (event.target.classList.contains('btn-delete')){
+        console.log('inside')
+
+         const parentNode = event.target.parentNode.parentNode.parentNode.parentNode
+
+         
+         parentNode.remove()
+         calCuletCount() 
+
+        //  console.log(parentNode)
+
+       }
 
 
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
 
 //  render interview
 
@@ -257,8 +295,15 @@ function renderRejected(rejectedLists) {
 
 
 // //////////////////////////////hidden related kaj /////////////////////////////////
-document.getElementById('btn-delete').addEventListener('click', function () {
-    const firstCard = document.getElementById('first-card');
-    firstCard.classList.add('hidden');
-})
+// document.getElementById('btn-delete').addEventListener('click', function (event) {
+//     const firstCard = document.getElementById('first-card');
+//       const parentNode = event.target.parentNode.parentNode.parentNode.parentNode
+//       console.log(parentNode)
+//     // firstCard.classList.add('hidden');
+//     // calCuletCount()
+//       total.innerText = allCardSection.children.length;
+//       // 1 jah button click main parent k dorta honbe ;
+//     //   this.removeChild ami 
+
+// })
 
